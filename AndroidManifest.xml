@@ -21,6 +21,7 @@
     android:versionCode="20400000"
     android:versionName="${versionName}">
 
+
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="24" />
@@ -81,6 +82,8 @@
         </activity>
         <activity android:name=".ui.activity.ManageAccountsActivity" />
         <activity android:name=".ui.activity.UploadFilesActivity" />
+        <activity android:name=".ui.activity.PhoneBook" />
+
         <activity
             android:name=".ui.activity.ReceiveExternalFilesActivity"
             android:excludeFromRecents="true"
