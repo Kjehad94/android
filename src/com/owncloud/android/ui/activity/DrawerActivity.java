@@ -228,6 +228,13 @@ public abstract class DrawerActivity extends ToolbarActivity {
                                         Preferences.class);
                                 startActivity(settingsIntent);
                                 break;
+
+                            case R.id.nav_phonebook:
+                                Intent pbIntent = new Intent(getApplicationContext(),
+                                        PhoneBook.class);
+                                startActivity(pbIntent);
+                                break;
+
                             case R.id.drawer_menu_account_add:
                                 createAccount(false);
                                 break;
