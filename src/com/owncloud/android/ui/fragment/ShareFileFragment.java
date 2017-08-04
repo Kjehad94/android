@@ -224,7 +224,7 @@ public class ShareFileFragment extends Fragment
 
         OwnCloudVersion serverVersion = AccountUtils.getServerVersion(mAccount);
         final boolean shareWithUsersEnable = (serverVersion != null && serverVersion.isSearchUsersSupported());
-
+        final boolean shareWithUserIndividualFileDisabled =false;
         TextView shareNoUsers = (TextView) view.findViewById(R.id.shareNoUsers);
 
         //  Add User/Groups Button
@@ -239,13 +239,23 @@ public class ShareFileFragment extends Fragment
             addUserGroupButton.setVisibility(View.GONE);
         }
 
+        //KUBA
+
+        else if (shareWithUserIndividualFileDisabled && !mFile.isFolder()) {
+            shareNoUsers.setText("Individual files cannot be shared among users and groups..");
+            shareNoUsers.setGravity(View.TEXT_ALIGNMENT_CENTER);
+            addUserGroupButton.setVisibility(View.GONE);
+        }
+
         addUserGroupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (shareWithUsersEnable) {
+
+                if (shareWithUsersEnable && mFile.isFolder()) {
                     // Show Search Fragment
                     mListener.showSearchUsersAndGroups();
-                } else {
+                }
+                else {
                     String message = getString(R.string.share_sharee_unavailable);
                     Snackbar snackbar = Snackbar.make(
                             getActivity().findViewById(android.R.id.content),
